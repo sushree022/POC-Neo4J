@@ -1,0 +1,20 @@
+version: "3"
+services:
+  neo4jdb:
+    image: neo4j
+    container_name: neo4j-springboot
+    volumes:
+      - /home/cgi/docker-volume:/data
+    ports:
+      - 7474:7474
+      - 7687:7687
+
+  spring-boot-neo4j:
+    build: .
+    container_name: movie-critic
+    ports:
+      - 8060:8080
+    depends_on:
+      - neo4jdb
+    expose:
+      - 8060
