@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.GraphId;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-
-import java.util.List;
 
 //Node entity is used to declare that this POJO class is an entity backed by a node in the graph database.
 @NodeEntity
+
 /*  Data bundles the features of @ToString, @EqualsAndHashCode, @Getter / @Setter
     and @RequiredArgsConstructor together*/
 @Data
@@ -26,10 +25,8 @@ import java.util.List;
  */
 public class Movies {
     //    declaration of variables
-    @GraphId
-    private int movieId;
+    @Id
+    private long movieId;
     private String movieName;
     private int movieReleaseYear;
-    @Relationship(type = "has")
-    private List<MovieStars> listOfMovieStars;
 }

@@ -3,7 +3,7 @@ package com.stackroute.springbootneo4j.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.neo4j.ogm.annotation.GraphId;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -25,13 +25,13 @@ import java.util.List;
 /*  It produces complex builder APIs for class
     It automatically produce the code required to have your class be instantiable with code
  */
-public class MovieStars {
+public class MovieCritic {
     //    declaration of variables
-    @GraphId
-    private int movieStarid;
-    private String movieStarName;
-    private int movieStarAge;
-    private String movieStarGender;
-    @Relationship(type="is in")
-    private List<Movies> listOfMovies;
+    @Id
+    private long criticId;
+    private String criticName;
+    private int criticAge;
+
+    @Relationship(type = "RATED", direction = Relationship.INCOMING)
+    private List<Movies> movies;
 }
